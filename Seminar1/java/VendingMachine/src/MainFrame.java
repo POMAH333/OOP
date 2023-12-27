@@ -1,112 +1,110 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.*;
 
+import Domain.*;
+import Services.*;
+
 public class MainFrame extends JFrame {
-    
-    
+
     final private Font mainFont = new Font("Segoe print", Font.BOLD, 18);
-    JTextField tfFirstName, tfLastName;
-    
-    
-    JLabel lbWelcome;
+    JTextField tfProduct, tfCost;
 
-    public void initialize() {
-       
-        
-        JLabel lbFirstName = new JLabel("First Name");
-        lbFirstName.setFont(mainFont);
+    JTextArea listBox; // Текстовая область для вывода списка продуктов
 
-        tfFirstName = new JTextField();
-        tfFirstName.setFont(mainFont);
-        
-        
-        JLabel lbLastName = new JLabel("First Name");
-        lbLastName.setFont(mainFont);
+    public void initialize(List<Product> listProd) {
 
-       
-        
-        tfLastName = new JTextField();
-        tfLastName.setFont(mainFont);
+        // Поле ввода номера продукта
+        JLabel lbProduct = new JLabel("Product №");
+        lbProduct.setFont(mainFont);
 
-        
-        
+        tfProduct = new JTextField();
+        tfProduct.setFont(mainFont);
+
+        // Поле ввода наличности
+        JLabel lbCost = new JLabel("Cost:");
+        lbCost.setFont(mainFont);
+
+        tfCost = new JTextField();
+        tfCost.setFont(mainFont);
+
         JPanel formPanel = new JPanel();
         formPanel.setLayout(new GridLayout(4, 1, 5, 5));
-        formPanel.add(lbFirstName);
-        formPanel.add(tfFirstName);
-        formPanel.add(lbLastName);
-        formPanel.add(tfLastName);
-        
-        
-        lbWelcome = new JLabel();
-        lbWelcome.setFont(mainFont);
+        formPanel.add(lbProduct);
+        formPanel.add(tfProduct);
+        formPanel.add(lbCost);
+        formPanel.add(tfCost);
 
-        
-        
-        JButton btnOk = new JButton("Ok");
+        // Установка области вывода продуктов
+        listBox = new JTextArea();
+        listBox.setFont(mainFont);
+        listBox.setLineWrap(true);
+
+        // Формирование списка продуктов
+        String pr = "";
+        int i = 1;
+
+        for (Product p : listProd) {
+            pr = pr + i + ". " + p.getName() + " - " + p.getPrice() + " р.\r\n";
+            i++;
+        }
+
+        // Вывод списка продуктов
+        listBox.setText(pr);
+
+        JButton btnOk = new JButton("Купить товар");
         btnOk.setFont(mainFont);
         btnOk.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                
-                String firstName = tfFirstName.getText();
-                String lastName = tfFirstName.getText();
-                lbWelcome.setText("Hello " + firstName + " " + lastName);
-                
-                
+
+                listBox.setText("");
+
             }
 
         });
 
-       
         JButton btnClear = new JButton("Clear");
         btnClear.setFont(mainFont);
         btnClear.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-               
-                tfFirstName.setText("");
-                tfFirstName.setText("");
-                lbWelcome.setText("");
-                
+
+                tfProduct.setText("");
+                tfProduct.setText("");
+                listBox.setText("");
+
             }
 
         });
 
-        
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(1, 2, 5, 5));
         buttonPanel.add(btnOk);
         buttonPanel.add(btnClear);
 
-        
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(new Color(128, 128, 255));
-        
+
         mainPanel.add(formPanel, BorderLayout.NORTH);
 
-        
-        mainPanel.add(lbWelcome, BorderLayout.CENTER);
+        mainPanel.add(listBox, BorderLayout.CENTER);
 
-        
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-       
         add(mainPanel);
 
-        
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         formPanel.setOpaque(false);
         buttonPanel.setOpaque(false);
 
-        
         setTitle("VendingMachines");
         setSize(500, 600);
         setMaximumSize(new Dimension(300, 400));
@@ -114,8 +112,7 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] arg)
-    {
+    public static void main(String[] arg) {
         MainFrame myFrame = new MainFrame();
         myFrame.initialize();
     }
