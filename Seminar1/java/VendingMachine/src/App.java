@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Domain.Bottle;
+import Domain.HotDrink;
 import Domain.Product;
 import Services.CoinDispenser;
 import Services.Display;
@@ -20,10 +21,10 @@ public class App {
         Product item7 = new Bottle(150, 3, "Cola", 1240, 0.5f);
 
         //Добавляем несколько Горячих Напитков
-        Product item8 = new Bottle(300, 4, "Latte", 1241, 85);
-        Product item9 = new Bottle(150, 8, "BlackTea", 1242, 90);
-        Product item10 = new Bottle(170, 9, "GreenTea", 1243, 70);
-        Product item11 = new Bottle(270, 5, "Cappuccino", 1244, 85);
+        Product item8 = new HotDrink(300, 4, "Latte", 1241, 85);
+        Product item9 = new HotDrink(150, 8, "BlackTea", 1242, 90);
+        Product item10 = new HotDrink(170, 9, "GreenTea", 1243, 70);
+        Product item11 = new HotDrink(270, 5, "Cappuccino", 1244, 85);
 
        // System.out.println(item7);
 
