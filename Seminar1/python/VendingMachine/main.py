@@ -1,14 +1,16 @@
 import sys
-from PyQt5.QtWidgets import QApplication
+# from PyQt5.QtWidgets import QApplication
 
 from typing import List
 from Domain.bottle import Bottle
 from Domain.product import Product
+from Domain.hot_drink import Hot_Drink
+# from Seminar1.python.VendingMachine.Domain.hot_drink
 from Services.coin_dispenser import CoinDispenser
 from Services.display import Display
 from Services.holder import Holder
 from Services.vending_machine import VendingMachine
-from main_frame import MainFrame
+# from main_frame import MainFrame
 
 
 if __name__ == "__main__":
@@ -17,10 +19,17 @@ if __name__ == "__main__":
     item1 = Product(100, 1, "Lays")
     item2 = Product(50, 2, "Cola")
     item3 = Bottle(150, 3, "Mineral Water", 101, 1.5)
+    item4 = Hot_Drink(300, 4, "Latte", 1241, 85)
+    item5 = Hot_Drink(150, 8, "BlackTea", 1242, 90)
+    item6 = Hot_Drink(170, 9, "GreenTea", 1243, 70)
+    item7 = Hot_Drink(270, 5, "Cappuccino", 1244, 85)
     assort.append(item1)
     assort.append(item2)
     assort.append(item3)
-
+    assort.append(item4)
+    assort.append(item5)
+    assort.append(item6)
+    assort.append(item7)
 
     hold1 = Holder(4, 4)
     coinDesp = CoinDispenser(0)
@@ -32,9 +41,9 @@ if __name__ == "__main__":
         print(prod)
 
 
-    app = QApplication(sys.argv)
-    myFrame = MainFrame()
-    myFrame.show()
-    sys.exit(app.exec_())
+    # app = QApplication(sys.argv)
+    # myFrame = MainFrame()
+    # myFrame.show()
+    # sys.exit(app.exec_())
 
     #print("Hello, World!")
