@@ -54,6 +54,6 @@ public class App {
         }
 
         MainFrame myFrame = new MainFrame();
-        myFrame.initialize(listProd);
+        myFrame.initialize(vm);
     }
 }

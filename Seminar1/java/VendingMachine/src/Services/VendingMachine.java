@@ -10,7 +10,7 @@ public class VendingMachine {
     private CoinDispenser coin;
     private Display disp;
     private List<Product> assort;
-    
+
     public VendingMachine(Holder hold, CoinDispenser coin, Display disp, List<Product> assort) {
         this.hold = hold;
         this.coin = coin;
@@ -18,14 +18,27 @@ public class VendingMachine {
         this.assort = assort;
     }
 
-    public void buyProduct()
-    {
-
+    // Покупка продукта с заданным идентификатором
+    public void buyProduct(long id) {
+        // assort.remove(id);
+        int indexProduct = 0;
+        for (Product p : assort) {
+            if(p.getId() == id){
+                indexProduct = assort.indexOf(p);
+            }
+        }
+        releaseProduct(assort.get(indexProduct).getPlace());
     }
 
-    public void releaseProduct()
-    {
-        
+    // Реализация продукта c установленного места
+    public void releaseProduct(int place) {
+        int indexProduct = -1;
+        for (Product p : assort) {
+            if(p.getPlace() == place){
+                indexProduct = assort.indexOf(p);
+            }
+        }
+        assort.remove(indexProduct);
     }
 
     public Holder getHold() {
@@ -60,5 +73,4 @@ public class VendingMachine {
         this.assort = assort;
     }
 
-     
 }

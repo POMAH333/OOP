@@ -16,7 +16,7 @@ public class MainFrame extends JFrame {
 
     JTextArea listBox; // Текстовая область для вывода списка продуктов
 
-    public void initialize(List<Product> listProd) {
+    public void initialize(VendingMachine vm) {
 
         // Поле ввода номера продукта
         JLabel lbProduct = new JLabel("Product №");
@@ -44,17 +44,9 @@ public class MainFrame extends JFrame {
         listBox.setFont(mainFont);
         listBox.setLineWrap(true);
 
-        // Формирование списка продуктов
-        String pr = "";
-        int i = 1;
-
-        for (Product p : listProd) {
-            pr = pr + i + ". " + p.getName() + " - " + p.getPrice() + " р.\r\n";
-            i++;
-        }
-
-        // Вывод списка продуктов
-        listBox.setText(pr);
+        // Формирование и вывод списка продуктов
+        List<Product> listProd = vm.getAssort();
+        listBoxUpdate(listProd);
 
         JButton btnOk = new JButton("Купить товар");
         btnOk.setFont(mainFont);
@@ -63,7 +55,16 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                listBox.setText("");
+                // Покупка продукта при нажатии кнопки купить товар
+                int prodNumber = Integer.parseInt(tfProduct.getText());
+                int cost = Integer.parseInt(tfCost.getText());
+                long prodId = listProd.get(prodNumber - 1).getId();
+                if (cost >= listProd.get(prodNumber - 1).getPrice()) {
+                    vm.buyProduct(prodId);
+                    listBoxUpdate(listProd);
+                } else {
+                    listBox.setText("Недостаточно денег для оплаты");
+                }
 
             }
 
@@ -76,9 +77,8 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                tfProduct.setText("");
-                tfProduct.setText("");
-                listBox.setText("");
+                // Перезагрузка списка товаров при нажатии кнопки сброса
+                listBoxUpdate(listProd);
 
             }
 
@@ -112,9 +112,27 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 
+    private void listBoxUpdate(List<Product> listProd) {
+        // Вывод списка продуктов
+        String pr = "";
+        int i = 1;
+
+        for (Product p : listProd) {
+            pr = pr + i + ". " + p.getName() + " - " + p.getPrice() + " р.\r\n";
+            i++;
+        }
+
+        listBox.setText(pr);
+    }
+
     public static void main(String[] arg) {
         MainFrame myFrame = new MainFrame();
-        myFrame.initialize();
+        Holder hold = new Holder();
+        CoinDispenser coin = new CoinDispenser();
+        Display disp = new Display();
+        List<Product> listProd = new ArrayList<>();
+        VendingMachine vm = new VendingMachine(hold, coin, disp, listProd);
+        myFrame.initialize(vm);
     }
 
 }
