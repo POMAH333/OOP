@@ -93,6 +93,7 @@ public class Market implements iMarcketBehaviour, iQueueBehaviour {
 
     @Override
     public void takeOrder() {
+
         for (iActorBehaviour actor : queue) {
             if (!actor.isMakeOrder()) {
                 actor.setMakeOrder(true);
@@ -102,6 +103,8 @@ public class Market implements iMarcketBehaviour, iQueueBehaviour {
                 System.out.println(actor.getActor().getName() + " отказ в обслуживании ");
                 logger.info(actor.getActor().getName() + " отказ в обслуживании "); // Логгирование события
                 actor.setMakeOrder(false);
+                System.out.println(actor.getActor().getName() + " клиент ушел из очереди ");
+                logger.info(actor.getActor().getName() + " клиент ушел из очереди "); // Логгирование события
             }
         }
 
