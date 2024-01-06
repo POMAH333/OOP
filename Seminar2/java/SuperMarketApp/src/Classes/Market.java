@@ -101,6 +101,7 @@ public class Market implements iMarcketBehaviour, iQueueBehaviour {
             } else { // Отказ в обслуживании, при превышении количества участников акции
                 System.out.println(actor.getActor().getName() + " отказ в обслуживании ");
                 logger.info(actor.getActor().getName() + " отказ в обслуживании "); // Логгирование события
+                actor.setMakeOrder(false);
             }
         }
 
