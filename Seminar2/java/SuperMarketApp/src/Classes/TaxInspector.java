@@ -7,12 +7,14 @@ public class TaxInspector implements iActorBehaviour {
     private boolean isTakeOrder;
     private boolean isMakeOrder;
 
+    /**
+     * Класс описания налогового инспектора
+     */
     public TaxInspector() {
         this.name = "Tax audit";
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -28,7 +30,7 @@ public class TaxInspector implements iActorBehaviour {
 
     @Override
     public void setTakeOrder(boolean val) {
-       this.isTakeOrder = val;
+        this.isTakeOrder = val;
     }
 
     @Override
@@ -40,7 +42,5 @@ public class TaxInspector implements iActorBehaviour {
     public Actor getActor() {
         return new OrdinaryClient(name);
     }
-
-
 
 }

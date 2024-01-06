@@ -1,13 +1,26 @@
 package Classes;
 
-public class OrdinaryClient extends Actor {
+public class ActionClient extends Actor {
+
+    private String actionName;
+    private int idClient;
+    private static int actionNumber;
 
     /**
      * @param name
-     *             Класс описания обычного клиента
+     * @param idClient
+     *                 Класс описывающий акционного клиента
      */
-    public OrdinaryClient(String name) {
+    public ActionClient(String name, int idClient) {
         super(name);
+        this.idClient = idClient;
+        this.actionName = "New Action";
+        ActionClient.actionNumber = 3;
+
+        // Установка флага заказа товара при превышении количества участников акции
+        if (this.idClient > actionNumber) {
+            setMakeOrder(true);
+        }
     }
 
     public boolean isTakeOrder() {
@@ -54,4 +67,5 @@ public class OrdinaryClient extends Actor {
     public void setName(String name) {
         super.name = name;
     }
+
 }
