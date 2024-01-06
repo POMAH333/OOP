@@ -17,14 +17,14 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
 
     @Override
     public void acceptToMarket(iActorBehaviour actor) {
-        System.out.println(actor.geActor().getName() + " клиент пришел в магазин ");
+        System.out.println(actor.getActor().getName() + " клиент пришел в магазин ");
         takeInQueue(actor);
     }
 
     @Override
     public void takeInQueue(iActorBehaviour actor) {
         this.queue.add(actor);
-        System.out.println(actor.geActor().getName() + " клиент добавлен в очередь ");
+        System.out.println(actor.getActor().getName() + " клиент добавлен в очередь ");
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (actor.isMakeOrder()) {
                 actor.setTakeOrder(true);
-                System.out.println(actor.geActor().getName() + " клиент получил свой заказ ");
+                System.out.println(actor.getActor().getName() + " клиент получил свой заказ ");
             }
         }
     }
@@ -58,8 +58,8 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
         List<Actor> releaseActors = new ArrayList<>();
         for (iActorBehaviour actor : queue) {
             if (actor.isTakeOrder()) {
-                releaseActors.add(actor.geActor());
-                System.out.println(actor.geActor().getName() + " клиент ушел из очереди ");
+                releaseActors.add(actor.getActor());
+                System.out.println(actor.getActor().getName() + " клиент ушел из очереди ");
             }
         }
         releseFromMarket(releaseActors);
@@ -70,7 +70,7 @@ public class Market implements iMarcketBehaviour,iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (!actor.isMakeOrder()) {
                 actor.setMakeOrder(true);
-                System.out.println(actor.geActor().getName() + " клиент сделал заказ ");
+                System.out.println(actor.getActor().getName() + " клиент сделал заказ ");
 
             }
         }

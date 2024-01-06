@@ -25,7 +25,7 @@ public class SpecialClient extends Actor {
         super.isMakeOrder = val;        
     }
 
-    public Actor geActor() {
+    public Actor getActor() {
         return this;
     }
 

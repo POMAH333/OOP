@@ -38,7 +38,7 @@ public abstract class Actor implements iActorBehaviour {
 
 //     }
 
-//     public void geActor () {
+//     public void getActor () {
         
 //     }
 // }
