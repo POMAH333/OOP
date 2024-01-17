@@ -5,29 +5,29 @@ import java.util.List;
 
 import Domain.Employee;
 import Domain.PersonComparator;
-import Domain.Student;
 
-public class EmployeeService implements iPersonService<Employee> {
+public class EmployeeService implements iPersonService<Employee<String>> {
     private int count;
-    private List<Employee> employees;
+    private List<Employee<String>> employees;
+
     public EmployeeService() {
         employees = new ArrayList<>();
     }
 
     @Override
-    public List<Employee> getAll() {
+    public List<Employee<String>> getAll() {
         return employees;
     }
+
     @Override
     public void create(String name, int age) {
-        Employee emp = new Employee(name, age, "разнорабочий");
+        Employee<String> emp = new Employee<>(name, age, "разнорабочий");
         count++;
         employees.add(emp);
     }
 
-    public void sortByFIO()
-    {
-        PersonComparator<Employee> emCom = new PersonComparator<>();
+    public void sortByFIO() {
+        PersonComparator<Employee<String>> emCom = new PersonComparator<>();
         employees.sort(emCom);
     }
 }

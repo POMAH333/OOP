@@ -17,7 +17,7 @@ public class AccountController {
      * @param <T>  - принимаемый тип наследник класса Person.
      * @param pers - принимаемый список людей, для подсчёта возраста.
      */
-    public static <T extends Person> void averageAge(List<T> pers) {
+    public static <T extends Person<String, Integer>> void averageAge(List<T> pers) {
         double age = 0;
         for (T t : pers) {
             age += t.getAge();

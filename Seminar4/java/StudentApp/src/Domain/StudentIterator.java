@@ -3,11 +3,11 @@ package Domain;
 import java.util.Iterator;
 import java.util.List;
 
-public class StudentIterator implements Iterator<Student> {
+public class StudentIterator implements Iterator<Student<Integer>> {
     private int counter;
-    private final List<Student> students;
+    private final List<Student<Integer>> students;
     
-    public StudentIterator(List<Student> students) {
+    public StudentIterator(List<Student<Integer>> students) {
         this.students = students;
         this.counter = 0;
     }
@@ -17,7 +17,7 @@ public class StudentIterator implements Iterator<Student> {
        return counter<students.size();
     }
     @Override
-    public Student next() {
+    public Student<Integer> next() {
         if(!hasNext())
         {
             return null;

@@ -3,20 +3,20 @@ package Domain;
 import java.util.Iterator;
 import java.util.List;
 
-public class StudentGroup implements Iterable<Student> {
-    private List<Student> group;
+public class StudentGroup implements Iterable<Student<Integer>> {
+    private List<Student<Integer>> group;
     private Integer idGroup;
 
-    public StudentGroup(List<Student> group, Integer idGroup) {
+    public StudentGroup(List<Student<Integer>> group, Integer idGroup) {
         this.group = group;
         this.idGroup = idGroup;
     }
 
-    public List<Student> getGroup() {
+    public List<Student<Integer>> getGroup() {
         return group;
     }
 
-    public void setGroup(List<Student> group) {
+    public void setGroup(List<Student<Integer>> group) {
         this.group = group;
     }
 
@@ -65,7 +65,7 @@ public class StudentGroup implements Iterable<Student> {
     // }
 
      @Override
-    public Iterator<Student> iterator() {
+    public Iterator<Student<Integer>> iterator() {
        return new StudentIterator(group);
         
     }

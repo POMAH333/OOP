@@ -2,19 +2,16 @@ package Domain;
 
 import java.util.Comparator;
 
-public class PersonComparator<T extends Person> implements Comparator<T> {
+public class PersonComparator<T extends Person<String, Integer>> implements Comparator<T> {
 
     @Override
     public int compare(T o1, T o2) {
         int res = o1.getName().compareTo(o2.getName());
-        if(res == 0)
-        {
+        if (res == 0) {
             return 0;
-        }
-        else
-        {
+        } else {
             return res;
         }
     }
-    
+
 }

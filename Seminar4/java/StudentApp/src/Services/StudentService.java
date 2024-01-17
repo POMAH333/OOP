@@ -6,20 +6,20 @@ import java.util.List;
 import Domain.PersonComparator;
 import Domain.Student;
 
-public class StudentService implements iPersonService<Student> {
+public class StudentService implements iPersonService<Student<Integer>> {
     private int count;
-    private List<Student> students;
+    private List<Student<Integer>> students;
     public StudentService() {
         students = new ArrayList<>();
     }
 
     @Override
-    public List<Student> getAll() {
+    public List<Student<Integer>> getAll() {
         return students;
     }
     @Override
     public void create(String name, int age) {
-        Student stud = new Student(name, age);
+        Student<Integer> stud = new Student<>(name, age);
         count++;
         students.add(stud);
         sortByFIO();
@@ -27,7 +27,7 @@ public class StudentService implements iPersonService<Student> {
 
     public void sortByFIO()
     {
-        PersonComparator<Student> studComp = new PersonComparator<>();
+        PersonComparator<Student<Integer>> studComp = new PersonComparator<>();
         students.sort(studComp);
     }
 

@@ -6,9 +6,9 @@ import java.util.List;
 import Domain.PersonComparator;
 import Domain.Teacher;
 
-public class TeacherService implements iPersonService<Teacher> {
+public class TeacherService implements iPersonService<Teacher<String>> {
     private int count;
-    private List<Teacher> teachers;
+    private List<Teacher<String>> teachers;
 
     /**
      * Класс для формирования списка преподавателей
@@ -19,13 +19,13 @@ public class TeacherService implements iPersonService<Teacher> {
 
     // Подключение обобщённого интерфейса iPersonService
     @Override
-    public List<Teacher> getAll() {
+    public List<Teacher<String>> getAll() {
         return teachers;
     }
 
     @Override
     public void create(String name, int age) {
-        Teacher teach = new Teacher(name, age, "Professor");
+        Teacher<String> teach = new Teacher<>(name, age, "Professor");
         count++;
         teachers.add(teach);
         sortByFIO();
@@ -33,7 +33,7 @@ public class TeacherService implements iPersonService<Teacher> {
 
     // Метод сортировки списка преподавателей по имени
     public void sortByFIO() {
-        PersonComparator<Teacher> techCom = new PersonComparator<>();
+        PersonComparator<Teacher<String>> techCom = new PersonComparator<>();
         teachers.sort(techCom);
     }
 
