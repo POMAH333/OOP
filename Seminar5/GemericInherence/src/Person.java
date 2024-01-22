@@ -1,15 +1,9 @@
-package Domain;
 
-public abstract class Person<T, V> {
+
+public abstract class Person<T,V> {
     private T name;
     private V age;
-
-    /**
-     * Произведено обобщение типов класса
-     * 
-     * @param name
-     * @param age
-     */
+    
     public Person(T name, V age) {
         this.name = name;
         this.age = age;
@@ -35,5 +29,7 @@ public abstract class Person<T, V> {
     public String toString() {
         return "Person [name=" + name + ", age=" + age + "]";
     }
-
+    
 }
+
+

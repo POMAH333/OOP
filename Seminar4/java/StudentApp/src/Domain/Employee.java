@@ -1,6 +1,6 @@
 package Domain;
 
-public class Employee<T> extends Worker {
+public class Employee<T, V> extends Worker<T, V> {
     private T special;
 
     /**
@@ -10,7 +10,7 @@ public class Employee<T> extends Worker {
      * @param age
      * @param special
      */
-    public Employee(String firstName, int age, T special) {
+    public Employee(T firstName, V age, T special) {
         super(firstName, age);
         this.special = special;
     }

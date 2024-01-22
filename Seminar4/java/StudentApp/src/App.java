@@ -14,14 +14,14 @@ import Services.TeacherService;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        Student<Integer> s1 = new Student<>("Иван", 25);
-        Student<Integer> s2 = new Student<>("Игорь", 23);
-        Student<Integer> s3 = new Student<>("Иван", 22);
-        Student<Integer> s4 = new Student<>("Игорь", 23);
-        Student<Integer> s5 = new Student<>("Даша", 23);
-        Student<Integer> s6 = new Student<>("Лена", 23);
+        Student<String, Integer> s1 = new Student<>("Иван", 25);
+        Student<String, Integer> s2 = new Student<>("Игорь", 23);
+        Student<String, Integer> s3 = new Student<>("Иван", 22);
+        Student<String, Integer> s4 = new Student<>("Игорь", 23);
+        Student<String, Integer> s5 = new Student<>("Даша", 23);
+        Student<String, Integer> s6 = new Student<>("Лена", 23);
 
-        List<Student<Integer>> listStud = new ArrayList<Student<Integer>>();
+        List<Student<String, Integer>> listStud = new ArrayList<Student<String, Integer>>();
         listStud.add(s1);
         listStud.add(s2);
         listStud.add(s3);
@@ -32,7 +32,7 @@ public class App {
         StudentGroup group4580 = new StudentGroup(listStud, 4580);
         System.out.println(group4580);
 
-        for (Student<Integer> std : group4580) {
+        for (Student<String, Integer> std : group4580) {
             System.out.println(std);
         }
 
@@ -40,12 +40,12 @@ public class App {
 
         Collections.sort(group4580.getGroup());
 
-        for (Student<Integer> std : group4580.getGroup()) {
+        for (Student<String, Integer> std : group4580.getGroup()) {
             System.out.println(std);
         }
 
-        Teacher<String> t1 = new Teacher<>("Эдуард", 50, "Доцент");
-        Employee<String> e1 = new Employee<>("Федор", 35, "Дворник");
+        Teacher<String, Integer> t1 = new Teacher<>("Эдуард", 50, "Доцент");
+        Employee<String, Integer> e1 = new Employee<>("Федор", 35, "Дворник");
 
         // AccountController controller = new AccountController();
         // controller.paySalary(t1, 50000);
@@ -72,7 +72,7 @@ public class App {
         professors.create("Petrov", 52);
         professors.create("Sidorov", 74);
         // Вывод списка профессоров в консоль
-        for (Person<String,Integer> p : professors.getAll()) {
+        for (Person<String, Integer> p : professors.getAll()) {
             System.out.println(p);
         }
         // Вывод среднего возраста профессоров
