@@ -92,7 +92,6 @@ public class ControllerClass implements iGetController {
     public void run() {
         Command com = (Command) Command.NONE;
         boolean getNewIter = true;
-        boolean studentDelete = false;
 
         // Выбор языка отображения из имеющихся в списке отображений
         while (getNewIter) {
@@ -129,15 +128,18 @@ public class ControllerClass implements iGetController {
                     break;
                 case DELETE: // Удаление студента с заданным номером с обходом всех моделей
                     Integer num = Integer.parseInt(view.get(lang).promptDelNum());
+                    boolean studentDelete = false;
                     for (iGetModel cur : model) {
-                        studentDelete = cur.delStudent(num);
-
-                        // Вывод сообщения об успешности удаления
-                        if (studentDelete) {
-                            view.get(lang).promptDelStudent(num);
-                        } else {
-                            view.get(lang).promptNotStudent(num);
+                        if (!studentDelete) {
+                            studentDelete = cur.delStudent(num);
+                            // Вывод сообщения об успешности удаления
+                            if (studentDelete) {
+                                view.get(lang).promptDelStudent(num);
+                            }
                         }
+                    }
+                    if (!studentDelete) {
+                        view.get(lang).promptNotStudent(num);
                     }
                     break;
                 default:

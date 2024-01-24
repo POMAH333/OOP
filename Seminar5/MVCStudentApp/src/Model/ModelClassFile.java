@@ -46,7 +46,7 @@ public class ModelClassFile implements iGetModel {
     }
 
     public void saveAllStudentToFile(List<Student> students) {
-        try (FileWriter fw = new FileWriter(fileName, true)) {
+        try (FileWriter fw = new FileWriter(fileName, false)) {
             for (Student pers : students) {
                 fw.write(pers.getName() + " " + pers.getAge() + " " + pers.getId());
                 fw.append('\n');
