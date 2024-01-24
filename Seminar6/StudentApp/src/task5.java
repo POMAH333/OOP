@@ -18,9 +18,9 @@
  */
 
 public class Car {
-    private Engine engine;
+    private iStartEngine engine;
 
-    public Car(Engine engine) {
+    public Car(iStartEngine engine) {
         this.engine = engine;
     }
 
@@ -29,12 +29,11 @@ public class Car {
     }
 }
 
-public class Engine {
-    public void start() {
-    }
+public interface iStartEngine {
+    public void start();
 }
 
-public class PetrolEngine extends Engine {
+public class PetrolEngine implements iStartEngine {
     @Override
     public void start() {
 
