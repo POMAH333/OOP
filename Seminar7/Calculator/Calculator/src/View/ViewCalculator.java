@@ -27,49 +27,51 @@ public class ViewCalculator {
     public void run() {
         while (true) {
             // Ввод первого комплексного аргумента
-            System.out.println("Введите первый аргумент:");
-            double valid = promptDoub("Введите действительную часть числа");
-            double imagin = promptDoub("Введите мнимую часть числа");
+            System.out.println("Введите первый аргумент:   ");
+            double valid = promptDoub("Введите действительную часть числа:   ");
+            double imagin = promptDoub("Введите мнимую часть числа:   ");
             calculator.setPrimaryArg(new Complex(valid, imagin));
 
             // Задание переменной для ввода операций и комманд
             String cmd = "";
             while (true) {
-                cmd = prompt("Введите операцию (+, -, *, /) : ");
+                cmd = prompt("Введите операцию (+, -, *, /):   ");
                 switch (cmd) {
                     // Операция сложения
                     case "+":
-                        System.out.println("Введите второй аргумент:");
-                        valid = promptDoub("Введите действительную часть числа");
-                        imagin = promptDoub("Введите мнимую часть числа");
+                        System.out.println("Введите второй аргумент:   ");
+                        valid = promptDoub("Введите действительную часть числа:   ");
+                        imagin = promptDoub("Введите мнимую часть числа:   ");
                         calculator.setSecondArg(new Complex(valid, imagin));
                         calculator.sum();
                         break;
                     // Операция вычитания
                     case "-":
-                        System.out.println("Введите второй аргумент:");
-                        valid = promptDoub("Введите действительную часть числа");
-                        imagin = promptDoub("Введите мнимую часть числа");
+                        System.out.println("Введите второй аргумент:   ");
+                        valid = promptDoub("Введите действительную часть числа:   ");
+                        imagin = promptDoub("Введите мнимую часть числа:   ");
                         calculator.setSecondArg(new Complex(valid, imagin));
                         calculator.sub();
                         break;
                     // Операция умножения
                     case "*":
-                        valid = promptDoub("Введите действительную часть числа");
-                        imagin = promptDoub("Введите мнимую часть числа");
+                        System.out.println("Введите второй аргумент:   ");
+                        valid = promptDoub("Введите действительную часть числа:   ");
+                        imagin = promptDoub("Введите мнимую часть числа:   ");
                         calculator.setSecondArg(new Complex(valid, imagin));
                         calculator.multi();
                         break;
                     // Операция деления
                     case "/":
-                        valid = promptDoub("Введите действительную часть числа");
-                        imagin = promptDoub("Введите мнимую часть числа");
+                        System.out.println("Введите второй аргумент:   ");
+                        valid = promptDoub("Введите действительную часть числа:   ");
+                        imagin = promptDoub("Введите мнимую часть числа:   ");
                         calculator.setSecondArg(new Complex(valid, imagin));
                         calculator.div();
                         break;
                     // Ввод неопределённой операции
                     default:
-                        System.out.println("Введённая операция не поддерживается");
+                        System.out.println("Данная операция не поддерживается");
                         break;
                 }
 
@@ -79,10 +81,8 @@ public class ViewCalculator {
                 break;
             }
             // Запрос на дальнейшую работу с калькулятором
-            cmd = prompt("Ещё посчитать Y/N");
-            System.out.println(cmd);
-            if (cmd.equals("Y")) {
-                System.out.println(cmd.equals("Y"));
+            cmd = prompt("Ещё посчитать Y/N   ");
+            if (cmd.toUpperCase().equals("Y")) {
                 continue;
             }
             break;

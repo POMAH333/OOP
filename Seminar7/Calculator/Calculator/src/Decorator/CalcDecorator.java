@@ -32,7 +32,7 @@ public class CalcDecorator implements iCalculable {
         Argument firstArg = oldCalc.getPrimaryArg();
         Argument secondArg = oldCalc.getSecondArg();
 
-        logger.log("Вычисление " + firstArg + " + " + secondArg);
+        logger.log(String.format("Вычисление %s + %s", firstArg.toString(), secondArg.toString()));
         logger.log("Вызов функции sum");
         iCalculable result = oldCalc.sum();
         logger.log(String.format("Вызова метода sum произошел"));
@@ -48,7 +48,7 @@ public class CalcDecorator implements iCalculable {
         Argument firstArg = oldCalc.getPrimaryArg();
         Argument secondArg = oldCalc.getSecondArg();
 
-        logger.log(String.format("Вычисление %d * %d", firstArg, secondArg));
+        logger.log(String.format("Вычисление %s * %s", firstArg.toString(), secondArg.toString()));
         logger.log("Вызов функции multi");
         iCalculable result = oldCalc.multi();
         logger.log(String.format("Вызова метода multi произошел"));
@@ -64,7 +64,7 @@ public class CalcDecorator implements iCalculable {
         Argument firstArg = oldCalc.getPrimaryArg();
         Argument secondArg = oldCalc.getSecondArg();
 
-        logger.log(String.format("Вычисление %d - %d", firstArg, secondArg));
+        logger.log(String.format("Вычисление %s - %s", firstArg.toString(), secondArg.toString()));
         logger.log("Вызов функции sub");
         iCalculable result = oldCalc.sub();
         logger.log(String.format("Вызова метода sub произошел"));
@@ -72,7 +72,7 @@ public class CalcDecorator implements iCalculable {
     }
 
     /**
-     * Метод вычисления результата от деления с логгированием
+     * Метод вычисления частного с логгированием
      */
     @Override
     public iCalculable div() {
@@ -80,7 +80,7 @@ public class CalcDecorator implements iCalculable {
         Argument firstArg = oldCalc.getPrimaryArg();
         Argument secondArg = oldCalc.getSecondArg();
 
-        logger.log(String.format("Вычисление %d / %d", firstArg, secondArg));
+        logger.log(String.format("Вычисление %s / %s", firstArg.toString(), secondArg.toString()));
         logger.log("Вызов функции div");
         iCalculable result = oldCalc.div();
         logger.log(String.format("Вызова метода div произошел"));
@@ -93,7 +93,7 @@ public class CalcDecorator implements iCalculable {
     @Override
     public Argument getPrimaryArg() {
         Argument arg = oldCalc.getPrimaryArg();
-        logger.log(String.format("Получение результата %d", arg));
+        logger.log(String.format("Первый аргумент %s", arg.toString()));
         return arg;
     }
 
@@ -103,7 +103,7 @@ public class CalcDecorator implements iCalculable {
     @Override
     public Argument getSecondArg() {
         Argument arg = oldCalc.getSecondArg();
-        logger.log(String.format("Получение результата %d", arg));
+        logger.log(String.format("Второй аргумент %s", arg.toString()));
         return arg;
     }
 
@@ -113,17 +113,25 @@ public class CalcDecorator implements iCalculable {
     @Override
     public Argument getResult() {
         Argument result = oldCalc.getResult();
-        logger.log("Получение результата %d" + result);
+        logger.log(String.format("Получение результата %s", result.toString()));
         return result;
     }
 
+    /**
+     * Установка первого аргумента с логгированием
+     */
     @Override
     public void setPrimaryArg(Complex complex) {
         oldCalc.setPrimaryArg(complex);
+        logger.log(String.format("Установлен первый аргумент %s", complex.toString()));
     }
 
+    /**
+     * Установка второго аргумента с логгированием
+     */
     @Override
     public void setSecondArg(Complex complex) {
         oldCalc.setSecondArg(complex);
+        logger.log(String.format("Установлен второй аргумент %s", complex.toString()));
     }
 }

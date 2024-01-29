@@ -33,8 +33,11 @@ public class Argument {
         this.valid = valid;
     }
 
+    /**
+     * Переопределение метода строкового вывода
+     */
     @Override
     public String toString() {
-        return "Argument [valid=" + valid + "]";
+        return "" + valid + "";
     }
 }

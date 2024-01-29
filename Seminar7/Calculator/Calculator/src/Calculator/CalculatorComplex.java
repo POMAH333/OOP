@@ -9,9 +9,9 @@ import Calculator.Interface.iCalculable;
  */
 public final class CalculatorComplex implements iCalculable {
 
-    private Complex primaryArg;
-    private Complex secondArg;
-    private Complex result;
+    private Complex primaryArg; // Первый аргумент вычислений
+    private Complex secondArg; // Второй аргумент вычислений
+    private Complex result; // Результат вычислений
 
     /**
      * Конструктор класса
@@ -32,12 +32,8 @@ public final class CalculatorComplex implements iCalculable {
     public iCalculable sum() {
         double valid = primaryArg.getValid();
         double imagin = primaryArg.getImagin();
-        System.out.println(valid);
-        System.out.println(imagin);
         valid += secondArg.getValid();
         imagin += secondArg.getImagin();
-        System.out.println(valid);
-        System.out.println(imagin);
         result.setValid(valid);
         result.setImagin(imagin);
         return this;
@@ -62,12 +58,12 @@ public final class CalculatorComplex implements iCalculable {
      */
     @Override
     public iCalculable sub() {
-        double valid1 = primaryArg.getValid();
-        double imagin1 = primaryArg.getImagin();
-        double valid2 = secondArg.getValid();
-        double imagin2 = secondArg.getImagin();
-        result.setValid(valid1 - valid2);
-        result.setImagin(imagin1 - imagin2);
+        double valid = primaryArg.getValid();
+        double imagin = primaryArg.getImagin();
+        valid -= secondArg.getValid();
+        imagin -= secondArg.getImagin();
+        result.setValid(valid);
+        result.setImagin(imagin);
         return this;
     }
 
